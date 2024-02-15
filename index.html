@@ -27,6 +27,31 @@
         .hamburger .line:last-child {
             margin-bottom: 0;
         }
+	    .menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: 150px;
+        }
+
+        .menu.active {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+        }
         /* Centering the content of the header */
         header {
             text-align: center;
@@ -48,6 +73,16 @@
         <div class="line"></div>
         <div class="line"></div>
     </div>
+	<div class="menu" id="menu">
+    <div class="menu-item"><i class="fas fa-home"></i> Home</div>
+    <div class="menu-item"><i class="fas fa-book"></i> Course</div>
+</div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("active");
+    }
     <header>
         <!-- Profile Picture and Name -->
         <div id="profile">

@@ -10,10 +10,13 @@
             text-align: center;
         }
 
-        /* Centering the image */
-        #profile img {
-            display: block;
-            margin: 0 auto; /* This will center the image in the div */
+        .logo {
+            width: 100px; /* Set the width as desired */
+            height: 100px; /* Make sure the height is the same as the width */
+            border-radius: 50%; /* This creates the circle shape */
+            object-fit: cover; /* This ensures the image covers the area without stretching */
+            border: 2px solid #fff; /* Optional: adds a white border around the image */
+            box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: adds a shadow for a lifted effect */
         }
     </style>
 </head>

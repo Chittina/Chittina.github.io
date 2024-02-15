@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Home Page</title>
     <style>
+	    .hamburger {
+            display: block;
+            width: 30px; /* width of the menu icon */
+            height: 20px; /* total height of the menu icon */
+            position: absolute; /* position it absolutely within the parent */
+            top: 10px; /* space from the top of the page */
+            left: 10px; /* space from the left of the page */
+            cursor: pointer; /* changes cursor appearance on hover */
+        }
+
+        /* Style the individual lines of the hamburger icon */
+        .hamburger .line {
+            width: 100%; /* match the width of the parent */
+            height: 3px; /* height of each line */
+            background-color: #333; /* color of the lines */
+            margin-bottom: 5px; /* space between the lines */
+        }
+
+        /* Remove the margin for the last line */
+        .hamburger .line:last-child {
+            margin-bottom: 0;
+        }
         /* Centering the content of the header */
         header {
             text-align: center;

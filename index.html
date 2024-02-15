@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Home Page</title>
-    <style>
-	    .hamburger {
-            display: block;
-            width: 30px; /* width of the menu icon */
-            height: 20px; /* total height of the menu icon */
-            position: absolute; /* position it absolutely within the parent */
-            top: 10px; /* space from the top of the page */
-            left: 10px; /* space from the left of the page */
-            cursor: pointer; /* changes cursor appearance on hover */
+   <style>
+        /* Hamburger Menu Icon */
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
         }
 
-        /* Style the individual lines of the hamburger icon */
-        .hamburger .line {
-            width: 100%; /* match the width of the parent */
-            height: 3px; /* height of each line */
-            background-color: #333; /* color of the lines */
-            margin-bottom: 5px; /* space between the lines */
+        .bar {
+            height: 3px;
+            background: #333;
         }
 
-        /* Remove the margin for the last line */
-        .hamburger .line:last-child {
-            margin-bottom: 0;
-        }
-	    .menu {
+        /* Menu */
+        .menu {
             display: none;
             position: absolute;
             top: 40px;
@@ -52,20 +46,29 @@
         .menu-item i {
             margin-right: 10px;
         }
-        /* Centering the content of the header */
-        header {
-            text-align: center;
-        }
-
-        .logo {
-            width: 100px; /* Set the width as desired */
-            height: 100px; /* Make sure the height is the same as the width */
-            border-radius: 50%; /* This creates the circle shape */
-            object-fit: cover; /* This ensures the image covers the area without stretching */
-            border: 2px solid #fff; /* Optional: adds a white border around the image */
-            box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: adds a shadow for a lifted effect */
-        }
     </style>
+</head>
+<body>
+
+<div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+
+<div class="menu" id="menu">
+    <div class="menu-item"><i class="fas fa-home"></i> Home</div>
+    <div class="menu-item"><i class="fas fa-user"></i> Profile</div>
+    <div class="menu-item"><i class="fas fa-envelope"></i> Messages</div>
+    <div class="menu-item"><i class="fas fa-info"></i> About</div>
+</div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("active");
+    }
+</script>
 </head>
 <body>
 <div class="hamburger">
@@ -77,6 +80,12 @@
     <div class="menu-item"><i class="fas fa-home"></i> Home</div>
     <div class="menu-item"><i class="fas fa-book"></i> Course</div>
 </div>
+	<script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("active");
+    }
+</script>
     <header>
         <!-- Profile Picture and Name -->
         <div id="profile">

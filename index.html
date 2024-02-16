@@ -184,6 +184,27 @@ function drawClock(){
         var menu = document.getElementById("menu");
         menu.classList.toggle("active");
     }
+<section id="joke-section">
+    <h2>Joke of the Minute</h2>
+    <p id="joke">Loading joke...</p>
+</section>
+
+<script>
+function fetchJoke() {
+    $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
+        if (result && result.joke) {
+            $("#joke").text(result.joke);
+        } else {
+            $("#joke").text("Could not retrieve a joke at this time.");
+        }
+    });
+}
+
+// Fetch a new joke every 1 minute (60000 milliseconds)
+fetchJoke();
+setInterval(fetchJoke, 60000);
+</script>
+	    
 </script>
 </body>
 </html>

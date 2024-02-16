@@ -184,6 +184,28 @@ function drawClock(){
         var menu = document.getElementById("menu");
         menu.classList.toggle("active");
     }
+function encodeInput(input) {
+    return $('<div/>').text(input).html();
+}
+function printResult(result){
+		$("#response").html(result);
+		$("#response").html(encodeInput(result));
+	}
+
+	$.get("https://v2.jokeapi.dev/joke/Programming?type=single",
+		function (result){
+			console.log("From jokeAPI: "+ JSON.stringify(result));
+			$("#response").html("A Programming joke of the day: " +result.joke);
+			if (result && result.joke) {
+				var encodedJoke = encodeInput(result.joke);
+			$("#response").text("Programming joke of the day: " +encodedJoke);
+			}
+			else{
+				$("#response").text("Could not retrieve a joke at this time.");
+			}
+		}
+			);
+
 	
 </script>
 </body>

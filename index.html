@@ -224,6 +224,10 @@ $(document).ready(function() {
     <p id="weather-info"></p>
 </section>
 <script>
+	const apiKey = 'fb867770c8ba4db7beb720f07f8fc4d6';
+    // Replace 'CITY_NAME' with the desired city name
+    const cityName = 'Cincinnati';
+    const apiUrl = https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey};
 async function getWeather() {
         try {
             const response = await fetch(apiUrl);

@@ -120,12 +120,53 @@ function drawClock(){
 </div>
     </header>
     
-    <!-- Welcome Message -->
-    <section id="welcome">
-        <p>Welcome to my homepage!</p>
-        <!-- Visitors Counter here -->
-    </section>
+<section id="welcome">
+    <!-- Add an id for the visit message -->
+    <p id="visitMessage">Welcome to my homepage!</p>
+</section>
 
+<!-- Your existing HTML content here -->
+
+<script>
+function getCookie(name) {
+    let cookieArray = document.cookie.split(';');
+    for(let i = 0; i < cookieArray.length; i++) {
+        let cookiePair = cookieArray[i].split('=');
+        if(name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    return null;
+}
+
+function setCookie(name, value, daysToLive) {
+    const date = new Date();
+    date.setTime(date.getTime() + (daysToLive*24*60*60*1000));
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+}
+
+function displayVisitMessage() {
+    const visitCookie = getCookie("lastVisit");
+    if(visitCookie == null) {
+        // This is a new visitor
+        document.getElementById("visitMessage").textContent = "Welcome back to my homepage!";
+        const now = new Date();
+        setCookie("lastVisit", now, 365); // Set cookie for 1 year
+    } else {
+        // This is a returning visitor
+        const lastVisit = new Date(visitCookie);
+        const formattedLastVisit = lastVisit.toLocaleString(); // Format the last visit date/time
+        document.getElementById("visitMessage").textContent = "Welcome back! Your last visit was " + formattedLastVisit;
+        const now = new Date();
+        setCookie("lastVisit", now, 365); // Update cookie for 1 year
+    }
+}
+
+window.onload = function() {
+    displayVisitMessage();
+};
+</script>
     <!-- Resume Section -->
     <section id="resume">
         <!-- Add your resume content here -->   
@@ -245,54 +286,6 @@ async function getWeather() {
             document.getElementById('weather-info').textContent = 'Error fetching weather data';
         }
     }
-</script>
-<section id="welcome">
-    <!-- Add an id for the visit message -->
-    <p id="visitMessage">Welcome to my homepage!</p>
-</section>
-
-<!-- Your existing HTML content here -->
-
-<script>
-function getCookie(name) {
-    let cookieArray = document.cookie.split(';');
-    for(let i = 0; i < cookieArray.length; i++) {
-        let cookiePair = cookieArray[i].split('=');
-        if(name == cookiePair[0].trim()) {
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-    return null;
-}
-
-function setCookie(name, value, daysToLive) {
-    const date = new Date();
-    date.setTime(date.getTime() + (daysToLive*24*60*60*1000));
-    let expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
-}
-
-function displayVisitMessage() {
-    const visitCookie = getCookie("lastVisit");
-    if(visitCookie == null) {
-        // This is a new visitor
-        document.getElementById("visitMessage").textContent = "Welcome back to my homepage!";
-        const now = new Date();
-        setCookie("lastVisit", now, 365); // Set cookie for 1 year
-    } else {
-        // This is a returning visitor
-        const lastVisit = new Date(visitCookie);
-        const formattedLastVisit = lastVisit.toLocaleString(); // Format the last visit date/time
-        document.getElementById("visitMessage").textContent = "Welcome back! Your last visit was " + formattedLastVisit;
-        const now = new Date();
-        setCookie("lastVisit", now, 365); // Update cookie for 1 year
-    }
-}
-
-window.onload = function() {
-    displayVisitMessage();
-};
-</script>
 </script>
 
 

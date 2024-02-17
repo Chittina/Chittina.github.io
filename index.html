@@ -245,21 +245,7 @@ function fetchJoke() {
 fetchJoke();
 setInterval(fetchJoke, 60000);
 </script>
-<section id="xkcd-comic-section">
-    <h2>XKCD Comic of the Day</h2>
-    <img id="xkcd-img" src="" alt="XKCD Comic" style="max-width: 100%; height: auto;">
-    <p id="xkcd-title"></p>
-</section>
-<script>
-$(document).ready(function() {
-    $.getJSON('https://xkcd.com/info.0.json', function(data) {
-        $('#xkcd-img').attr('src', data.img).attr('alt', data.title);
-        $('#xkcd-title').text(data.title);
-    }).fail(function() {
-        $('#xkcd-title').text('Failed to load XKCD comic.');
-    });
-});
-</script>
+
 <h2>Weather forecast</h2>
 <div id="weather-info">
         <!-- Weather icon will be displayed here -->

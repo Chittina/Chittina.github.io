@@ -4,24 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Home Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* Body styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Light gray background */
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header styles */
-        header {
-            background-color: #333; /* Dark gray header background */
-            color: #fff; /* White text color */
-            padding: 20px;
-            text-align: center;
-        }
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <style>
         /* Hamburger Menu Icon */
         .hamburger {
             cursor: pointer;
@@ -30,12 +14,11 @@
             justify-content: space-around;
             width: 30px;
             height: 25px;
-            color: #fff; /* White hamburger icon color */
         }
 
         .bar {
             height: 3px;
-            background: #fff; /* White bar color */
+            background: #333;
         }
 
         /* Menu */
@@ -44,7 +27,7 @@
             position: absolute;
             top: 40px;
             left: 10px;
-            background: #fff; /* White menu background */
+            background: white;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
@@ -64,14 +47,11 @@
         .menu-item i {
             margin-right: 10px;
         }
-
-        /* Profile styles */
-        #profile {
+	   #profile {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-top: 20px;
         }
 
         .circle-image {
@@ -80,29 +60,6 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px; /* Space between image and text */
-        }
-
-        /* Main content styles */
-        main {
-            padding: 20px;
-        }
-
-        /* Section styles */
-        section {
-            background-color: #fff; /* White section background */
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        section h2 {
-            color: #333; /* Dark gray section title color */
-            margin-bottom: 10px;
-        }
-
-        section p {
-            color: #666; /* Gray text color */
-            line-height: 1.6;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://waph-uc.github.io/style1.css">
@@ -121,114 +78,56 @@
             <i class="fas fa-home"></i> Home
         </a>
     </div>
-    <div class="menu-item">
+<div class="menu-item">
         <a href="waph.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
             <i class="fas fa-book"></i> Courses
         </a>
     </div>
 </div>
 
-<header>
-    <!-- Profile Picture and Name -->
-    <div id="profile">
-        <img src="images/picture.png" alt="Profile Picture" class="circle-image">
-        <h1 style="margin: 0;">Nagarjuna Chittimadugula</h1>
-        <p style="margin: 5px 0;">+1(513)-224-0495 | <button id="emailButton" onclick="toggleEmail()">Show my email</button></p>
-        <p id="email" style="display: none;">nagarjuna@example.com</p>
-    </div>
-    <div id="digit-clock"></div>
-    <canvas id="analog-clock"  width="150" height="150" style="background-color:#999"></canvas>
-</header>
 
-<main>
-    <section id="welcome">
-        <h2>Welcome</h2>
-        <p id="visitMessage">Welcome to my homepage!</p>
-    </section>
+    <header>
+        <!-- Profile Picture and Name -->
+        <div id="profile">
+            <img src="images/picture.png" alt="Profile Picture">
+            <h1>Nagarjuna Chittimadugula</h1>
+            <p>+1(513)-224-0495 | <div id="email" onclick="showhideEmail()">Show my email</div>
+    		<script type="text/javascript" src="email.js"></script>
+        </div>
+         <div id="digit-clock"></div>
+		<canvas id="analog-clock"  width="150" height="150" style="background-color:#999"></canvas>
+        
+		<script src="https://waph-uc.github.io/clock.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			function displayTime() {
+				document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
+			}
+			setInterval(displayTime, 500);
+            var canvas = document.getElementById("analog-clock");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
 
-    <!-- Resume Section -->
-    <section id="resume">
-        <!-- Add your resume content here -->   
-    </section>
+function drawClock(){
+	drawFace(ctx, radius);
+	drawNumbers(ctx, radius);
+	drawTime(ctx, radius);
+}
+</script>
+</div>
+    </header>
+    
+<section id="welcome">
+    <!-- Add an id for the visit message -->
+    <p id="visitMessage">Welcome to my homepage!</p>
+</section>
 
-    <a href="https://info.flagcounter.com/WBlr"><img src="https://s11.flagcounter.com/count2/WBlr/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-
-    <!-- Education -->
-    <section id="education">
-        <h2>Education</h2>
-        <h4>Master of Science, Information Technology</h4>
-        <p>University of Cincinnati, Cincinnati, OH</p>
-      
-        <h4>Bachelor of Engineering, Electronics and Communication Engineering</h4>
-        <p>Vel Tech Rangarajan Dr. Sagunthala R & D Institute of Science and Technology, Tamil Nadu, India</p>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <h3>Technical Skills</h3>
-        <p>Programming Languages: <span>Python, C, Java</span></p>
-        <p>Web Development: HTML, CSS</p>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-        <h2>Experience</h2>
-        <p>Accenture Solutions Pvt Ltd</p>
-        <p>Worked as a Quality Assurance Engineer.</p>
-        <ul>
-            <li>Logged defects directly into the ALM tool.</li>
-            <li>Maintained test cases within the ALM tool and tracked the execution status.</li>
-        </ul>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>Fiber Non-linearity Compensation using Machine Learning.</li>
-            <li>Arduino-based Door Unlocking System using Face and Biometrics.</li>
-        </ul>
-    </section>
-	
-    <section id="seminars">
-        <h2>Seminars</h2>
-        <ul>
-            <li>Design of a Large Scale Multi-user MIMO Systems beyond 5G</li>
-        </ul>
-    </section>
-
-    <section id="joke-section">
-        <h2>Joke of the Minute</h2>
-        <p id="joke">Loading joke...</p>
-    </section>
-
-    <section id="weather-info">
-        <h2>Weather Forecast</h2>
-        <div id="weather-details"></div>
-        <img id="weather-icon" src="" alt="Weather Icon">
-    </section>
-</main>
+<!-- Your existing HTML content here -->
 
 <script>
-function toggleMenu() {
-    var menu = document.getElementById("menu");
-    menu.classList.toggle("active");
-}
-
-function toggleEmail() {
-    var emailElement = document.getElementById("email");
-    var emailButton = document.getElementById("emailButton");
-
-    if (emailElement.style.display === "none") {
-        emailElement.style.display = "block";
-        emailButton.textContent = "Hide my email";
-    } else {
-        emailElement.style.display = "none";
-        emailButton.textContent = "Show my email";
-    }
-}
-
 function getCookie(name) {
     let cookieArray = document.cookie.split(';');
     for(let i = 0; i < cookieArray.length; i++) {
@@ -250,12 +149,14 @@ function setCookie(name, value, daysToLive) {
 function displayVisitMessage() {
     const visitCookie = getCookie("lastVisit");
     if(visitCookie == null) {
+        // This is a new visitor
         document.getElementById("visitMessage").textContent = "Welcome back to my homepage!";
         const now = new Date();
         setCookie("lastVisit", now, 365); // Set cookie for 1 year
     } else {
+        // This is a returning visitor
         const lastVisit = new Date(visitCookie);
-        const formattedLastVisit = lastVisit.toLocaleString();
+        const formattedLastVisit = lastVisit.toLocaleString(); // Format the last visit date/time
         document.getElementById("visitMessage").textContent = "Welcome back! Your last visit was " + formattedLastVisit;
         const now = new Date();
         setCookie("lastVisit", now, 365); // Update cookie for 1 year
@@ -266,37 +167,127 @@ window.onload = function() {
     displayVisitMessage();
 };
 </script>
+    <!-- Resume Section -->
+    <section id="resume">
+        <!-- Add your resume content here -->   
+    </section>
+<a href="https://info.flagcounter.com/WBlr"><img src="https://s11.flagcounter.com/count2/WBlr/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    <!-- Education -->
+    <section id="education">
+        <!-- Add your education details here -->
+        <h2>Education</h2>
+        <h4>Master of science, information technology</h4>
+        <p>University of Cincinnati, Cincinnati, OH</p>
+      
+      <h4> Bachelor of Engineering, Electronics and Communication Engineering</h4>
+      <p> Vel Tech Rangarajan Dr sagunthala R & D institue of science and Technology, Tamil nadu, India</p>
+      
+    </section>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Skills -->
+    <section id="skills">
+        <!-- Add a list of your skills here -->
+        <h2>Skills</h2>
+        <h3>Technical Skills</h3>
+      <p>Programming Languages: <span>Python, C, Java</span> </p>
+      <p>Web Development: HTML, CSS</p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <!-- Add your experience details here -->
+        <h2>Experience</h2>
+        <p>Accenture Solutions Pvt Ltd</p>
+        <p>Worked as a Quality assurance engineer.</p>
+      <ul>
+        <li>Log defects directly into the ALM tool.</li>
+        <li>Maintaince of test cases within the ALM tool and tracking the execution status. </li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <!-- Detail your projects here -->
+        <h2>Projects</h2>
+        <ul>
+        <li>Fiber non-linearity compensation using machine learning.</li>
+        <li>Aurdino based door unlocking system using face and biometrics.</li>
+    </section>
+	
+    <section id="Seminars">
+    <h2>Seminar</h2>
+    <ul>
+    <li>Design of a large scale multi-user MIMO systems beyond 5G</li>
+    </ul>
+	    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("active");
+    }
+    </script>
+<section id="joke-section">
+    <h2>Joke of the Minute</h2>
+    <p id="joke">Loading joke...</p>
+</section>
+
 <script>
-$(document).ready(function () {
-    var apiKey = 'd85b5b1624164bf288d5e16eddba3245';
-
-    $.get("https://api.weatherbit.io/v2.0/current", {
-        key: apiKey,
-        city: 'Cincinnati'
-    })
-    .done(function (data) {
-        if (data && data.data && data.data.length > 0) {
-            var weatherData = data.data[0];
-            var temperature = weatherData.temp;
-            var description = weatherData.weather.description;
-            var iconCode = weatherData.weather.icon;
-
-            var iconUrl = "https://www.weatherbit.io/static/img/icons/" + iconCode + ".png";
-
-            $("#weather-icon").attr("src", iconUrl);
-            $("#weather-details").html("<p>Temperature: " + temperature + "°C</p>" +
-                "<p>Description: " + description + "</p>");
+function fetchJoke() {
+    $.get("https://v2.jokeapi.dev/joke/Programming?type=single", function(result) {
+        if (result && result.joke) {
+            $("#joke").text(result.joke);
         } else {
-            $("#weather-info").html("<p>Unable to fetch weather data.</p>");
+            $("#joke").text("Could not retrieve a joke at this time.");
         }
-    })
-    .fail(function () {
-        $("#weather-info").html("<p>Error occurred while fetching weather data.</p>");
     });
-});
+}
+
+// Fetch a new joke every 1 minute (60000 milliseconds)
+fetchJoke();
+setInterval(fetchJoke, 60000);
 </script>
 
+<h2>Weather forecast</h2>
+<div id="weather-info">
+        <!-- Weather icon will be displayed here -->
+        <img id="weather-icon" src="" alt="Weather Icon">
+        <div id="weather-details"></div>
+      </div>
+      <script>
+        $(document).ready(function () {
+        var apiKey = 'd85b5b1624164bf288d5e16eddba3245'; 
+
+        // Make a GET request to Weatherbit API for current weather data
+        $.get("https://api.weatherbit.io/v2.0/current", {
+            key: apiKey,
+            city: 'Cincinnati' // Example city, you can change it to any city you want
+        })
+            .done(function (data) {
+                // Check if the request was successful and data is available
+                if (data && data.data && data.data.length > 0) {
+                    var weatherData = data.data[0];
+                    var temperature = weatherData.temp;
+                    var description = weatherData.weather.description;
+                    var iconCode = weatherData.weather.icon;
+
+                    // Construct the URL for the weather icon
+                    var iconUrl = "https://www.weatherbit.io/static/img/icons/" + iconCode + ".png";
+ // Display weather information on the webpage
+                    $("#weather-icon").attr("src", iconUrl);
+                    $("#weather-details").html("<p>Temperature: " + temperature + "°C</p>" +
+                        "<p>Description: " + description + "</p>");
+                } else {
+                    $("#weather-info").html("<p>Unable to fetch weather data.</p>");
+                }
+            })
+            .fail(function () {
+                $("#weather-info").html("<p>Error occurred while fetching weather data.</p>");
+            });
+    });
+
+                        </script>
+
+
+
+</script>
 </body>
 </html>

@@ -244,7 +244,7 @@ function displayVisitMessage() {
     const visitCookie = getCookie("lastVisit");
     if(visitCookie == null) {
         // This is a new visitor
-        document.getElementById("visitMessage").textContent = "Welcome to my homepage!";
+        document.getElementById("visitMessage").textContent = "Welcome back to my homepage!";
         const now = new Date();
         setCookie("lastVisit", now, 365); // Set cookie for 1 year
     } else {
